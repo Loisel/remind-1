@@ -80,7 +80,7 @@ inputdata <- loadInputData(data_folder)
 
 vot_data = inputdata$vot_data
 sw_data = inputdata$sw_data
-inco_data = inputdata$inco_data
+pref_data = inputdata$pref_data
 logit_params = inputdata$logit_params
 int_dat = inputdata$int_dat
 nonfuel_costs = inputdata$nonfuel_costs
@@ -158,7 +158,7 @@ if (inconvenience) {
   logit_data <- calculate_logit_inconv_endog(
     prices= REMIND_prices[tot_price > 0],
     vot_data = vot_data,
-    inco_data = inco_data,
+    pref_data = pref_data,
     logit_params = logit_params,
     intensity_data = int_dat,
     price_nonmot = price_nonmot,
