@@ -203,6 +203,7 @@ $setGlobal optimization  nash         !! def = nash
 ***---------------------    81_codePerformance    -------------------------------
 $setGlobal codePerformance  off       !! def = off
 
+$setGlobal cm_biotr_bounds off
 ***-----------------------------------------------------------------------------
 ***                     SWITCHES and FLAGS
 ***-----------------------------------------------------------------------------

@@ -55,6 +55,7 @@ vm_deltaCap.up(t,regi,"fnrs",rlf) = 0;
 *** -----------------------------------------------------------------------------------------------------------------
 *** Traditional biomass use is phased out on an exogeneous time path
 *** -----------------------------------------------------------------------------------------------------------------
+$ifthen %cm_biotr_bounds% == "on"
 vm_deltaCap.up(t,regi,"biotr",rlf)$(t.val gt 2005) = 0;
 loop(regi,
      if( ( pm_gdp("2005",regi)/pm_pop("2005",regi) ) > 10,
@@ -86,6 +87,8 @@ $if %cm_GDPscen% == "gdp_SDP"  vm_deltaCap.fx(t,regi,"biotr","1")$(t.val gt 2020
 $if %cm_GDPscen% == "gdp_SSP1" vm_deltaCap.fx(t,regi,"biotr","1")$(t.val gt 2020) = 0.65 * vm_deltaCap.lo(t,regi,"biotr","1");
 $if %cm_GDPscen% == "gdp_SSP5" vm_deltaCap.fx(t,regi,"biotr","1")$(t.val gt 2020) = 0.65 * vm_deltaCap.lo(t,regi,"biotr","1");
 
+$endif
+
 *** ------------------------------------------------------------------------------------------
 *LP* implement switch for scenarios with or without carbon sequestration:
 *** ------------------------------------------------------------------------------------------
@@ -97,6 +100,7 @@ if ( c_ccsinjecratescen eq 0, !!no carbon sequestration at all
 *** ------------------------------------------------------------------------------------------
 *RP* implement switch for scenarios with different carbon capture assumptions::
 *** ------------------------------------------------------------------------------------------
+
 if (cm_ccapturescen eq 2,  !! no carbon capture at all
   vm_cap.fx(t,regi_capturescen,"ngccc",rlf)        = 0;
   vm_cap.fx(t,regi_capturescen,"pcc",rlf)          = 0;
