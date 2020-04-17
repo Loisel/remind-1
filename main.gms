@@ -82,9 +82,9 @@
 * 
 * Regionscode: 690d3718e151be1b450b394c1064b1c5
 * 
-* Input data revision: 5.94
+* Input data revision: 5.941
 * 
-* Last modification (input data): Thu Mar 19 16:15:13 2020
+* Last modification (input data): Thu Apr 16 14:53:13 2020
 * 
 *###################### R SECTION END (VERSION INFO) ###########################
 
@@ -163,7 +163,7 @@ $setGlobal trade  standard     !! def = standard
 ***---------------------    26_agCosts ------------------------------------------
 $setGlobal agCosts  costs               !! def = costs
 ***---------------------    29_CES_parameters    --------------------------------
-$setglobal CES_parameters  load       !! def = load
+$setglobal CES_parameters  calibrate       !! def = load
 ***---------------------    30_biomass    ---------------------------------------
 $setGlobal biomass  magpie_40 !! def = magpie_40
 ***---------------------    31_fossil    ----------------------------------------
@@ -203,7 +203,8 @@ $setGlobal optimization  nash         !! def = nash
 ***---------------------    81_codePerformance    -------------------------------
 $setGlobal codePerformance  off       !! def = off
 
-$setGlobal cm_biotr_bounds off
+$setGlobal cm_biotr_bounds  on
+$setGlobal cm_feso_fixing  on
 ***-----------------------------------------------------------------------------
 ***                     SWITCHES and FLAGS
 ***-----------------------------------------------------------------------------

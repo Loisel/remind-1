@@ -500,4 +500,13 @@ loop ((t, regi) $ ( (sameAs(t,"2010") OR sameAs(t,"2015"))
       vm_prodSe.up(t,regi,"pegas","sehe","gashp")   = 0;
 );
 );
+
+$ifthen %cm_feso_fixing% == "on"
+$if %cm_GDPscen% == "gdp_SDP" vm_cesIO.fx("2025", "USA", "fesob") = pm_cesdata("2025", "USA", "fesob", "quantity");
+$if %cm_GDPscen% == "gdp_SDP" vm_cesIO.fx("2025", "USA", "fesoi") = pm_cesdata("2025", "USA", "fesoi", "quantity");
+
+$if %cm_GDPscen% == "gdp_SSP2" vm_cesIO.fx("2055", "USA", "fesob") = pm_cesdata("2055", "USA", "fesob", "quantity");
+$if %cm_GDPscen% == "gdp_SSP2" vm_cesIO.fx("2055", "USA", "fesoi") = pm_cesdata("2055", "USA", "fesoi", "quantity");
+$endif
+
 *** EOF ./core/bounds.gms
