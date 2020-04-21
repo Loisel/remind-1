@@ -84,7 +84,7 @@
 * 
 * Input data revision: 5.941
 * 
-* Last modification (input data): Thu Apr 16 14:53:13 2020
+* Last modification (input data): Tue Apr 21 09:38:45 2020
 * 
 *###################### R SECTION END (VERSION INFO) ###########################
 
@@ -204,7 +204,8 @@ $setGlobal optimization  nash         !! def = nash
 $setGlobal codePerformance  off       !! def = off
 
 $setGlobal cm_biotr_bounds  on
-$setGlobal cm_feso_fixing  on
+$setGlobal cm_feso_fixing  off
+$setGlobal cm_feso_full_fixing  on
 ***-----------------------------------------------------------------------------
 ***                     SWITCHES and FLAGS
 ***-----------------------------------------------------------------------------
