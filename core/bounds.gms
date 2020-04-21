@@ -509,7 +509,8 @@ $if %cm_GDPscen% == "gdp_SSP2" vm_cesIO.fx("2055", "USA", "fesob") = pm_cesdata(
 $if %cm_GDPscen% == "gdp_SSP2" vm_cesIO.fx("2055", "USA", "fesoi") = pm_cesdata("2055", "USA", "fesoi", "quantity");
 $endif
 
-$ifthen %cm_feso_full_fixing% == "on"
+$ifthen %cm_feso_full_fixing% == "on" AND NOT %c_CES_calibration_iteration% == %c_CES_calibration_iterations%
+
 vm_cesIO.fx(t, "USA", "fesob") = pm_cesdata(t, "USA", "fesob", "quantity");
 vm_cesIO.fx(t, "USA", "fesoi") = pm_cesdata(t, "USA", "fesoi", "quantity");
 $endif
