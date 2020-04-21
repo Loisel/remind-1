@@ -206,6 +206,8 @@ $setGlobal codePerformance  off       !! def = off
 $setGlobal cm_biotr_bounds  on
 $setGlobal cm_feso_fixing  off
 $setGlobal cm_feso_full_fixing  on
+$setGlobal cm_feso_nosmooth on
+
 ***-----------------------------------------------------------------------------
 ***                     SWITCHES and FLAGS
 ***-----------------------------------------------------------------------------

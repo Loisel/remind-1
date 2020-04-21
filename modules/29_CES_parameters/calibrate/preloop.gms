@@ -270,7 +270,12 @@ display "before price smoothing", cesOut2cesIn_below, pm_cesdata;
 
 
 *** Smooth non 2005 prices with moving average
-pm_cesdata(t,regi,in_29,"price") $ (( not ((ord(t) le 1) or (ord(t) eq card(t)))) AND (ppf_29(in_29) ))
+pm_cesdata(t,regi,in_29,"price") $ (
+    ( not ((ord(t) le 1) or (ord(t) eq card(t))))
+    AND (ppf_29(in_29) )
+$if %cm_feso_nosmooth% == "on" AND NOT sameas(in_29, "fesob")
+$if %cm_feso_nosmooth% == "on" AND NOT sameas(in_29, "fesoi")
+)
                            =
                            ( pm_cesdata(t -1 ,regi,in_29,"price")/8
                            + pm_cesdata(t,regi,in_29,"price")
