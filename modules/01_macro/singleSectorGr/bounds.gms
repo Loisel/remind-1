@@ -8,7 +8,8 @@
 
 *nb* lower bounds on CES values
 vm_cons.lo(t,regi)     = 1e-3;
-vm_cesIO.lo(t,regi,in) = 1e-6;
+$if %cm_feso_full_fixing% == "off" vm_cesIO.lo(t,regi,in) = 1e-6;
+$if %cm_feso_full_fixing% == "on" vm_cesIO.lo(t,regi,in)$(NOT sameas(in, "fesob") AND NOT sameas(in, "fesoi")) = 1e-6;
 vm_cesIOdelta.lo(t,regi,in_putty) = 1e-6;
 
 *nb fix energy inputs to CES structure in t0 to the parameter values
