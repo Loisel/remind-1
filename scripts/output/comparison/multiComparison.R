@@ -58,7 +58,7 @@ require(data.table)
 
 compareScenTable <- function(listofruns){
   CORES = 12
-  COUPLED_PREFIX = "C_"
+  COUPLED_PREFIX = ""
   OUTPUT_FOLDER = "multi_comparison_plots"
 
   scendt <- fread("config/multi_comparison_matrix.csv")
@@ -98,7 +98,7 @@ compareScenTable <- function(listofruns){
       warning(sprintf("No output found for scenario %s and budget %s", sc, budg))
       return(NA)
     }
-    mif <- file.path(choice, paste0("REMIND_generic_", basename(choice), ".mif"))
+    mif <- file.path(choice, paste0("REMIND_generic_", sc, "-", budg, ".mif"))
     return(mif)
   }
 
