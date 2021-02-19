@@ -231,7 +231,8 @@ c_bioliqscen          "bioenergy liquids technology choise"
 c_bioh2scen           "bioenergy hydrogen technology choice"
 c_shGreenH2           "lower bound on share of green hydrogen in all hydrogen by 2030"
 c_shBioTrans          "upper bound on share of bioliquids in transport from 2025 onwards"
-cm_shSynTrans         "lower bound on share of synthetic fuels in all transport fuels by 2045"
+cm_shSynLiq           "lower bound on share of synthetic fuels in all transport fuels by 2045"
+cm_shSynLiqTrans      "lower bound on share of synthetic fuels in all transport fuels by 2045"
 cm_shSynGas           "lower bound on share of synthetic gases by 2045"
 cm_IndCCSscen        "CCS for Industry"
 cm_optimisticMAC     "assume optimistic Industry MAC from AR5 Ch. 10?"
@@ -353,7 +354,8 @@ c_bioliqscen     = 1;        !! def = 1
 c_bioh2scen      = 1;        !! def = 1
 c_shGreenH2      = 0;        !! def = 0
 c_shBioTrans     = 1;        !! def = 1
-cm_shSynTrans    = 0;        !! def = 0
+cm_shSynLiq      = 0;        !! def = 0
+cm_shSynLiqTrans = 0;        !! def = 0
 cm_shSynGas      = 0;        !! def = 0
 c_solscen        = 1;        !! def = 1
 

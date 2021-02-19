@@ -30,9 +30,13 @@ if(cm_emiscen = 1,
 *** force synthetic liquids in as a share of total liquids
 ***----------------------------------------------------------------------------
 
-v39_shSynTrans.lo(t,regi)$(t.val eq 2035) = cm_shSynTrans / 4;
-v39_shSynTrans.lo(t,regi)$(t.val eq 2040) = cm_shSynTrans / 2;
-v39_shSynTrans.lo(t,regi)$(t.val ge 2045) = cm_shSynTrans;
+v39_shSynLiq.lo(t,regi)$(t.val eq 2035) = cm_shSynLiq / 4;
+v39_shSynLiq.lo(t,regi)$(t.val eq 2040) = cm_shSynLiq / 2;
+v39_shSynLiq.lo(t,regi)$(t.val ge 2045) = cm_shSynLiq;
+
+v39_shSynLiqTrans.lo(t,regi)$(t.val eq 2035) = cm_shSynLiqTrans / 4;
+v39_shSynLiqTrans.lo(t,regi)$(t.val eq 2040) = cm_shSynLiqTrans / 2;
+v39_shSynLiqTrans.lo(t,regi)$(t.val ge 2045) = cm_shSynLiqTrans;
 
 ***----------------------------------------------------------------------------
 *** force synthetic gases in as a share of total liquids

@@ -6,6 +6,7 @@
 *** |  Contact: remind@pik-potsdam.de
 *** SOF ./modules/39_CCU/on/equations.gms
 
+
 *** ---------------------------------------------------------
 *** calculate CCU emissions (= CO2 demand of CCU technologies)
 *** ---------------------------------------------------------
@@ -21,14 +22,22 @@ q39_emiCCU(t,regi,te)$(te_ccu39(te))..
   )
 ;
 
-
-*' Adjust the shares of synfuels in transport liquids.
+*' Adjust the shares of synfuels in liquids.
 *' This equation is only effective when CCU is switched on.
-q39_shSynTrans(t,regi)..
+q39_shSynLiq(t,regi)..
     (
 	sum(pe2se(entyPe,entySe,te)$seAgg2se("all_seliq",entySe), vm_prodSe(t,regi,entyPe,entySe,te))
 	+ sum(se2se(entySe,entySe2,te)$seAgg2se("all_seliq",entySe2), vm_prodSe(t,regi,entySe,entySe2,te))
-    ) * v39_shSynTrans(t,regi)
+    ) * v39_shSynLiq(t,regi)
+    =e=
+    vm_prodSe(t,regi,"seh2","seliqbio","MeOH")
+;
+
+*' Adjust the shares of synfuels in transport liquids.
+*' This equation is only effective when CCU is switched on.
+q39_shSynLiqTrans(t,regi)..
+    sum(se2fe(entySe,entyFe,te)$entyFeTrans(entyFe), vm_prodFe(t,regi,entySe,entyFe,te))
+    * v39_shSynLiqTrans(t,regi)
     =e=
     vm_prodSe(t,regi,"seh2","seliqbio","MeOH")
 ;
