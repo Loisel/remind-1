@@ -82,9 +82,9 @@
 * 
 * Regionscode: 690d3718e151be1b450b394c1064b1c5
 * 
-* Input data revision: 5.947
+* Input data revision: 5.958
 * 
-* Last modification (input data): Thu Jul 30 13:06:59 2020
+* Last modification (input data): Thu May 20 09:16:23 2021
 * 
 *###################### R SECTION END (VERSION INFO) ###########################
 
@@ -139,7 +139,7 @@ option profile = 0;
 
 
 ***---------------------    Run name    -----------------------------------------
-$setGlobal c_expname  default
+$setGlobal c_expname  Budg1100_HydrHypeWise
 
 ***------------------------------------------------------------------------------
 ***                           MODULES
@@ -164,7 +164,7 @@ $setGlobal growth  exogenous          !! def = exogenous
 ***---------------------    21_tax    -------------------------------------------
 $setGlobal tax  on                    !! def = on
 ***---------------------    22_subsidizeLearning    -----------------------------
-$setGlobal subsidizeLearning  off     !! def = off
+$setGlobal subsidizeLearning  globallyOptimal     !! def = off
 ***---------------------    23_capitalMarket    -----------------------------
 $setGlobal capitalMarket  debt_limit     !! def = debt_limit
 ***---------------------    24_trade    -----------------------------------------
@@ -182,7 +182,7 @@ $setGlobal power  IntC               !! def = IntC
 ***---------------------    33_cdr       ----------------------------------------
 $setGlobal CDR  DAC                   !! def = DAC
 ***---------------------    35_transport    -------------------------------------
-$setGlobal transport  complex         !! def = complex
+$setGlobal transport  edge_esm         !! def = complex
 ***---------------------    36_buildings    -------------------------------------
 $setglobal buildings  simple          !! def = simple
 ***---------------------    37_industry    --------------------------------------
@@ -192,13 +192,13 @@ $setglobal stationary  off            !! def = simple
 ***---------------------    39_CCU    --------------------------------------
 $setglobal CCU  off !! def = off
 ***---------------------    40_techpol  -----------------------------------------
-$setglobal techpol  none              !! def = none
+$setglobal techpol  NDC2018              !! def = none
 ***---------------------    41_emicapregi  --------------------------------------
 $setglobal emicapregi  none           !! def = none
 ***---------------------    42_banking  -----------------------------------------
 $setglobal banking  off               !! def = off
 ***---------------------    45_carbonprice  -------------------------------------
-$setglobal carbonprice  none          !! def = none
+$setglobal carbonprice  diffCurvPhaseIn2Lin          !! def = none
 ***---------------------    47_regipol  -------------------------------------
 $setglobal regipol  none              !! def = none
 ***---------------------    50_damages    ---------------------------------------
@@ -308,13 +308,13 @@ cm_GDPcovid                  "GDP correction for covid"
 
 cm_iteration_max       = 1;     !! def = 1
 c_solver_try_max       = 2;     !! def = 2
-c_keep_iteration_gdxes = 0;     !! def = 0
+c_keep_iteration_gdxes = 1;     !! def = 0
 cm_nash_autoconverge   = 1;     !! def = 1
 $setglobal cm_MAgPIE_coupling  off     !! def = "off"
 
-cm_emiscen        = 1;         !! def = 1
-$setglobal cm_rcp_scen  none   !! def = "none"
-cm_co2_tax_2020   = -1;        !! def = -1
+cm_emiscen        = 9;         !! def = 1
+$setglobal cm_rcp_scen  rcp26   !! def = "none"
+cm_co2_tax_2020   = 100;        !! def = -1
 cm_co2_tax_growth = 1.05;      !! def = 1.05
 c_macscen         = 1;         !! def = 1
 
@@ -322,8 +322,8 @@ cm_nucscen       = 2;        !! def = 2
 cm_ccapturescen  = 1;        !! def = 1
 c_bioliqscen     = 1;        !! def = 1
 c_bioh2scen      = 1;        !! def = 1
-c_shGreenH2      = 0;        !! def = 0
-c_shBioTrans     = 1;        !! def = 1
+c_shGreenH2      = 0.95;        !! def = 0
+c_shBioTrans     = 0.05;        !! def = 1
 cm_shSynTrans    = 0;        !! def = 0
 c_solscen        = 1;        !! def = 1
 
@@ -348,7 +348,7 @@ $setglobal c_GDPpcScen  SSP2     !! def = gdp_SSP2   (automatically adjusted by 
 cm_GDPcovid      = 0;            !! def = 0
 
 *AG* and *CB* for cm_startyear greater than 2005, you have to copy the fulldata.gdx (rename it to: input_ref.gdx) from the run you want to build your new run onto.
-cm_startyear      = 2005;      !! def = 2005 for a BAU, 2015 for policy runs
+cm_startyear      = 2025;      !! def = 2005 for a BAU, 2015 for policy runs
 c_start_budget    = 2100;      !! def = 2100
 
 cm_prtpScen         = 3;         !! def = 3
@@ -375,10 +375,10 @@ c_cint_scen           = 1;         !! def = 1
 cm_damage             = 0.005;     !! def = 0.005
 cm_solwindenergyscen  = 1;         !! def = 1
 c_techAssumptScen     = 1;         !! def = 1
-c_ccsinjecratescen    = 1;         !! def = 1
+c_ccsinjecratescen    = 5;         !! def = 1
 c_ccscapratescen      = 1;         !! def = 1
 c_export_tax_scen     = 0;         !! def = 0
-cm_iterative_target_adj  = 0;      !! def = 0
+cm_iterative_target_adj  = 9;      !! def = 0
 cm_gdximport_target      = 0;      !! def = 0
 $setglobal c_SSP_forcing_adjust  forcing_SSP2   !! def = forcing_SSP2
 $setglobal c_delayPolicy  SPA0           !! def = SPA0
@@ -389,10 +389,10 @@ cm_expoLinear_yearStart  = 2050;   !! def = 2050
 c_budgetCO2FFI           = 1000;   !! def = 1000
 c_abtrdy                 = 2010;   !! def = 2010
 c_abtcst                 = 1;      !! def = 1
-c_budgetCO2              = 1350;   !! def = 1300
+c_budgetCO2              = 1100;   !! def = 1300
 $setGlobal cm_regiCO2target  off       !! def = off
-cm_peakBudgYr                 = 2050;    !! def = 2050
-cm_taxCO2inc_after_peakBudgYr = 2;      !! def = 2
+cm_peakBudgYr                 = 2080;    !! def = 2050
+cm_taxCO2inc_after_peakBudgYr = 3;      !! def = 2
 cm_CO2priceRegConvEndYr       = 2050;   !! def = 2050
 
 cm_trdadj            = 2;    !! def = 2.0
@@ -412,7 +412,7 @@ cm_noReboundEffect     = 0;
 $setGlobal cm_EsubGrowth         low  !! def = low
 $setGlobal c_scaleEmiHistorical  on  !! def = on
 
-$setGlobal cm_EDGEtr_scen  ConvCase  !! def = ConvCase
+$setGlobal cm_EDGEtr_scen  HydrHypeWise  !! def = ConvCase
 
 $setGlobal c_regi_nucscen  all !! def = all
 $setGlobal c_regi_capturescen  all !! def = all
@@ -424,7 +424,7 @@ $setGlobal c_regi_capturescen  all !! def = all
 $SETGLOBAL cm_SlowConvergence  off        !! def = off
 $setGlobal cm_nash_mode  parallel      !! def = parallel
 $setGlobal c_EARLYRETIRE       on         !! def = on
-$setGlobal cm_OILRETIRE  off        !! def = off
+$setGlobal cm_OILRETIRE  on        !! def = off
 $setglobal cm_INCONV_PENALTY  on         !! def = on
 $setGlobal cm_so2_out_of_opt  on         !! def = on
 $setGlobal c_skip_output  off        !! def = off
@@ -439,7 +439,7 @@ $setGlobal cm_magicc_temperatureImpulseResponse  off           !! def = off
 
 $setGlobal cm_damage_DiceLike_specification  HowardNonCatastrophic   !! def = HowardNonCatastrophic
 
-$setglobal cm_CES_configuration  stat_off-indu_fixed_shares-buil_simple-tran_complex-POP_pop_SSP2-GDP_gdp_SSP2-Kap_debt_limit-Reg_690d3718e1   !! this will be changed by start_run()
+$setglobal cm_CES_configuration  stat_off-indu_fixed_shares-buil_simple-tran_edge_esm-POP_pop_SSP2-GDP_gdp_SSP2-Kap_debt_limit-demTrsp_wise-Reg_690d3718e1   !! this will be changed by start_run()
 
 $setglobal c_CES_calibration_new_structure  0    !!  def  =  0
 $setglobal c_CES_calibration_iterations  10   !!  def  =  10

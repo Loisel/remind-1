@@ -16,9 +16,9 @@ vm_co2capture.up(t,regi,"cco2","ico2","ccsinje","1") = 50;
 *** lower bound on share of synthetic fuels in all transport fuels by 2035
 ***----------------------------------------------------------------------------
 
-v39_shSynTrans.lo(t,regi)$(t.val eq 2025) = cm_shSynTrans / 4;
-v39_shSynTrans.lo(t,regi)$(t.val eq 2030) = cm_shSynTrans / 2;
-v39_shSynTrans.lo(t,regi)$(t.val gt 2030) = cm_shSynTrans;
+v39_shSynTrans.lo(t,regi)$(t.val eq 2030) = cm_shSynTrans / 4;
+v39_shSynTrans.lo(t,regi)$(t.val eq 2035) = cm_shSynTrans / 2;
+v39_shSynTrans.lo(t,regi)$(t.val gt 2035) = cm_shSynTrans;
 
 
 *** EOF ./modules/39_CCU/39_CCU.gms
